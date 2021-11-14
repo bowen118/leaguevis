@@ -15,10 +15,10 @@
     <script type="text/javascript">
         function scrollto(div)
         {
-            $('html,body').animate(
+            $("html, body").animate(
                 {
-                    scrollTop: $("#"+div).offset().top - 30
-                });
+                    scrollTop: $("#"+div).offset().top - 60
+                }, "slow");
         }
     </script>
 
@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar sticky-top navbar-expand-md navbar-dark navbar-no-bg">
     <a class="navbar-brand" href="index.html">League Vis</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,8 +34,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active" onclick="scrollto('home');">
-                <a class="nav-link" href="#">Home</a>
+            <li class="nav-item active" onclick="scrollto('start');">
+                <a class="nav-link" href="#">Start</a>
             </li>
             <li class="nav-item" onclick="scrollto('page1');">
                 <a class="nav-link" href="#">Page1</a>
@@ -52,12 +52,18 @@
             <li class="nav-item" onclick="scrollto('page5');">
                 <a class="nav-link" href="#">Page5</a>
             </li>
+            <li class="nav-item" onclick="scrollto('page6');">
+                <a class="nav-link" href="#">Page6</a>
+            </li>
+            <li class="nav-item" onclick="scrollto('explore');">
+                <a class="nav-link" href="#">Explore</a>
+            </li>
         </ul>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <div class="page" id="home">
+    <div class="page" id="start">
         <h1>MAIN TITLE</h1>
         <p>
             Can make this a full-width background that is league themed.
@@ -65,23 +71,52 @@
     </div>
 
     <div class="page" id="page1">
-        Vis 1
+        <h3>Vis group 1</h3>
+        First few pages should explain what league of legends is (basics, towers, champions, etc) as well as how big the pro play scene is.</br>
+        Can load elements on scroll, with transitions/animations on load (we can add this later after layout and visualizations are finalized).</br>
+        Do not necessarily need visualizations here.</br>
     </div>
 
     <div class="page" id="page2">
-        Vis 2
+        <h3>Vis group 2</h3>
+        Difference in team performance in regions</br>
+        Top teams vs regions (vis on championship wins (worlds, MSI, etc.) over time and/or total count)
     </div>
 
     <div class="page" id="page3">
-        Vis 3
+        <h3>Vis group 3</h3>
+        Champion picks</br>
+        Top champion picks by win rate</br>
+        Champion pick/ban rate</br>
+        Top team pick bans vs bottom team pick bans</br>
+        ......</br>
     </div>
 
     <div class="page" id="page4">
-        Vis 4
+        <h3>Vis group 4</h3>
+        Game length factors</br>
+        Game length vs. win rate</br>
     </div>
 
     <div class="page" id="page5">
-        Vis 5
+        <h3>Vis group 5</h3>
+        Objectives</br>
+        Late game and early game factors (dragon, dragon soul, baron) vs win/loss</br>
+        Innovative visualization involving in game map could be added here. Alternatively, we can make the map a
+        background transition on scroll to zoom and pan to relevant areas
+        (like the Charles River example) and show visualizations (such as to tower
+        for tower visualization, shop for spending). Need to blur background though, also need to figure out zoom and pan
+        on discrete scroll).
+    </div>
+
+    <div class="page" id="page6">
+        <h3>Vis group 6</h3>
+        Roles</br>
+        Gold earning and spending
+    </div>
+
+    <div class="page" id="explore">
+        General visualization at the end. Not part of the storyline. Something exploratory like Joon#6 that lets users explore the data.
     </div>
 </div>
 
