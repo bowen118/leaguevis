@@ -1,0 +1,38 @@
+body
+{
+    margin:0px auto;
+    padding:0px;
+    text-align:center;
+    width:100%;
+    font-family: "Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;
+}
+
+.navbar {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.page  {
+    margin-bottom: 5rem;
+    height: 80vh;
+    padding: 2%;
+    box-sizing: border-box;
+    background-color:#084B8A;
+    color:white;
+}
+
+.page h1 {
+    font-size:40px;
+}
+
+.page p {
+    font-size:20px;
+}
+
+#home {
+    height: 100vh !important;
+}
