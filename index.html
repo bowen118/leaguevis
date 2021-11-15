@@ -116,7 +116,10 @@
     </div>
 
     <div class="page" id="explore">
-        General visualization at the end. Not part of the storyline. Something exploratory like Joon#6 that lets users explore the data.
+        <div class="buttons-container">
+            <button type="button" onclick="dataChange(true)">Players</button>
+            <button type="button" onclick="dataChange(false)">Teams</button>
+        </div>
     </div>
 </div>
 
@@ -129,5 +132,8 @@
 
 <!-- Load data, create visualizations -->
 <script src="js/main.js"></script>
+
+<!-- Load vis -->
+<script src="js/scatterplot.js"></script>
 </body>
 </html>
