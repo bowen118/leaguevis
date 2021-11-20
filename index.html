@@ -78,9 +78,17 @@
     </div>
 
     <div class="page" id="page2">
-        <h3>Vis group 2</h3>
-        Difference in team performance in regions</br>
-        Top teams vs regions (vis on championship wins (worlds, MSI, etc.) over time and/or total count)
+        <h3>Some regions consistently do better than others</h3>
+        <div class="row justify-content-center">
+            <div class="col-6" id="region-bar">
+                <select id='categorySelector' class="form-select align-self-center" style="width: 100%" onchange="categoryChange()">
+                    <option value="total" selected>Total</option>
+                    <option value="worlds">World Championship</option>
+                    <option value="msi">Mid-Season Invitationals</option>
+                </select>
+            </div>
+            <div class="col-6"></div>
+        </div>
     </div>
 
     <div class="page" id="page3">
@@ -134,6 +142,8 @@
 <script src="js/main.js"></script>
 
 <!-- Load vis -->
+<script src="js/regionbarchart.js"></script>
 <script src="js/scatterplot.js"></script>
+
 </body>
 </html>

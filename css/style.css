@@ -15,11 +15,16 @@ body {
 /* Visualizations */
 .title {
     font-size: 20px;
+    fill: white;
 }
 
 .scatter-plot-title {
     font-weight: lighter;
     color: white;
+}
+
+.row {
+    height: 100%;
 }
 
 /* Navigation */
