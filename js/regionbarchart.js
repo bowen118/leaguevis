@@ -19,7 +19,7 @@ class RegionBarChart {
         console.log(vis.data)
 
         // Define SVG parameters
-        vis.margin = {top: 40, right: 40, bottom: 100, left: 40};
+        vis.margin = {top: 60, right: 40, bottom: 100, left: 40};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -35,7 +35,7 @@ class RegionBarChart {
             .attr('class', 'title bar-title')
             .append('text')
             .text("Championship titles by region")
-            .attr('transform', `translate(${vis.width / 2}, -10)`)
+            .attr('transform', `translate(${vis.width / 2}, -30)`)
             .attr('text-anchor', 'middle');
 
         // Scales and axes
@@ -69,24 +69,24 @@ class RegionBarChart {
             .selectAll("g")
             .data(vis.keys)
             .enter().append("g")
-            .attr("transform", function(d, i) { return "translate(0," + i * 30 + ")"; });
+            .attr("transform", function(d, i) { return `translate(0, ${i * 20 - 20})`; });
 
         legend.append("rect")
-            .attr("x", vis.width - 28)
+            .attr("x", vis.width - 19)
             .attr("width", 28)
-            .attr("height", 28)
+            .attr("height", 19)
             .attr("fill", vis.colorScale);
 
         legend.append("text")
             .attr("fill", "white")
-            .attr("x", vis.width - 32)
-            .attr("y", 15)
+            .attr("x", vis.width - 25)
+            .attr("y", 10)
             .attr("dy", "0.32em")
             .text(function(d) {
                 let labels = {
-                    first: "First place",
-                    second: "Second place",
-                    third_fourth: "Third or fourth place"
+                    first: "Champion",
+                    second: "Runner-up",
+                    third_fourth: "3rd or 4th"
                 }
                 return labels[d]
             });
