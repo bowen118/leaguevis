@@ -3,7 +3,7 @@
 * * * * * * * * * * * * * */
 
 // init global variables & switches
-let regionVis;
+let regionBar, regionCount;
 let scatterPlotVis;
 
 let promises = [
@@ -16,13 +16,14 @@ Promise.all(promises).then(data => initMainPage(data)).catch(err => console.log(
 
 function initMainPage(dataArray) {
     const [playersData, teamsData, tournament_data] = dataArray
-    regionVis = new RegionBarChart("region-bar", tournament_data)
+    regionBar = new RegionBarChart("region-bar", tournament_data)
+    regionCount = new RegionCountChart("region-count")
     // scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
 
 function categoryChange() {
     let selectedCategory = $('#categorySelector').val();
-    regionVis.wrangleData(selectedCategory);
+    regionBar.wrangleData(selectedCategory);
 }
 
 function dataChange(isPlayer) {

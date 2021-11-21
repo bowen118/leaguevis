@@ -16,7 +16,7 @@ class RegionBarChart {
 
     initVis() {
         let vis = this
-        console.log(vis.data)
+        // console.log(vis.data)
 
         // Define SVG parameters
         vis.margin = {top: 60, right: 40, bottom: 100, left: 40};
@@ -60,7 +60,7 @@ class RegionBarChart {
             .attr("transform", `translate(0, ${vis.height})`);
 
         vis.handleYAxisUpdate = vis.svg.append("g")
-            .attr("class", "x-axis axis");
+            .attr("class", "y-axis axis");
 
         let legend = vis.svg.append("g")
             .attr("font-family", "sans-serif")
@@ -111,7 +111,7 @@ class RegionBarChart {
 
         vis.ordinalScale.domain(vis.displayData.map(d => d.region))
         vis.numericScale.domain([0, d3.max(vis.displayData, d => d.total)]);
-        vis.colorScale.domain(vis.keys)
+        // vis.colorScale.domain(vis.keys)
 
         let transitionDuration = 800;
         vis.handleXAxisUpdate.transition().duration(transitionDuration)
@@ -135,7 +135,7 @@ class RegionBarChart {
                 .attr("y", function(d) { return vis.numericScale(d[1]); })
                 .attr("height", function(d) { return vis.numericScale(d[0]) - vis.numericScale(d[1]); })
                 .attr("width", vis.ordinalScale.bandwidth())
-                .attr("fill", function(d) { return vis.colorScale(key); });
+                .attr("fill", vis.colorScale(key));
         })
     }
 }
