@@ -17,6 +17,6 @@ function initMainPage(dataArray) {
     scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
 
-function dataChange(isPlayer) {
-    scatterPlotVis.wrangleData(isPlayer)
+function dataChange(isPlayer, isFilter = false) {
+    scatterPlotVis.wrangleData(isPlayer, isFilter)
 }
