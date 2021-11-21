@@ -116,9 +116,24 @@
     </div>
 
     <div class="page" id="explore">
-        <div class="buttons-container">
-            <button type="button" onclick="dataChange(true)">Players</button>
-            <button type="button" onclick="dataChange(false)">Teams</button>
+        <div id="explore-filters">
+            <div class="buttons-container">
+                Choose Data Set:
+                <button type="button" onclick="dataChange(true)">Players</button>
+                <button type="button" onclick="dataChange(false)">Teams</button>
+            </div>
+            <div class="buttons-container">
+                X Axis:
+                <select class="form-select form-select-sm columns-data" id="filter-x-axis" onchange="dataChange(true, true)"></select>
+                Y Axis:
+                <select class="form-select form-select-sm columns-data" id="filter-y-axis" onchange="dataChange(true, true)"></select>
+            </div>
+            <div class="buttons-container">
+                Specific Player:
+                <select class="form-select form-select-sm columns-data" id="filter-by-player"></select>
+                Specific Team:
+                <select class="form-select form-select-sm columns-data" id="filter-by-team"></select>
+            </div>
         </div>
     </div>
 </div>
