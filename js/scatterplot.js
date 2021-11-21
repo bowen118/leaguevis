@@ -61,7 +61,7 @@ class ScatterPlot {
         let vis = this
 
         // set domains for scales
-        console.log(d3.max(vis.corrArr, d => d.x), d3.max(vis.corrArr, d => d.y))
+        // console.log(d3.max(vis.corrArr, d => d.x), d3.max(vis.corrArr, d => d.y))
         vis.x.domain([0, d3.max(vis.corrArr, d => d.x)])
         vis.y.domain([0, d3.max(vis.corrArr, d => d.y)])
 
@@ -73,7 +73,7 @@ class ScatterPlot {
         // enter & update
         scatterDots.enter().append("circle")
             .attr("cx", function (d) {
-                console.log(vis.x(d.x))
+                // console.log(vis.x(d.x))
                 return vis.x(d.x); } )
             .attr("cy", function (d) { return vis.y(d.y); } )
             .attr("r", 1)
