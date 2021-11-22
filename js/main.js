@@ -16,10 +16,10 @@ Promise.all(promises).then(data => initMainPage(data)).catch(err => console.log(
 
 function initMainPage(dataArray) {
     const [playersData, teamsData, normalizedTeamsData, coords] = dataArray
-    // scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
-    innovativeVis = new Innovative("start", normalizedTeamsData, coords)
+    innovativeVis = new Innovative("start", teamsData, normalizedTeamsData, coords)
+    scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
 
 function dataChange(isPlayer, isFilter = false) {
-    // scatterPlotVis.wrangleData(isPlayer, isFilter)
+    scatterPlotVis.wrangleData(isPlayer, isFilter)
 }
