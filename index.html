@@ -49,12 +49,12 @@
             <li class="nav-item" onclick="scrollto('page4');">
                 <a class="nav-link" href="#">Page4</a>
             </li>
-            <li class="nav-item" onclick="scrollto('page5');">
-                <a class="nav-link" href="#">Page5</a>
-            </li>
-            <li class="nav-item" onclick="scrollto('page6');">
-                <a class="nav-link" href="#">Page6</a>
-            </li>
+<!--            <li class="nav-item" onclick="scrollto('page5');">-->
+<!--                <a class="nav-link" href="#">Page5</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item" onclick="scrollto('page6');">-->
+<!--                <a class="nav-link" href="#">Page6</a>-->
+<!--            </li>-->
             <li class="nav-item" onclick="scrollto('explore');">
                 <a class="nav-link" href="#">Explore</a>
             </li>
@@ -68,10 +68,16 @@
     </div>
 
     <div class="page" id="page1">
-        <h3>Vis group 1</h3>
-        First few pages should explain what league of legends is (basics, towers, champions, etc) as well as how big the pro play scene is.</br>
-        Can load elements on scroll, with transitions/animations on load (we can add this later after layout and visualizations are finalized).</br>
-        Do not necessarily need visualizations here.</br>
+        <div id="text-container">
+            <h3>What is League of Legends?</h3>
+            <p>League of legends is a multiplayer online battle arena video game developed by Riot Games in 2009. </p>
+            <p>Games consist of 10 players, each player piloting a Champion. A champion may earn gold throughout gameplay and buy new items that enhance their performance. Gold can be earned by 1) killing or assisting in killing an opposing team’s Champion, 2) killing neutral and opponent’s minions (commonly referred to as creep score, “CS”), and 3) taking down neutral and opponent’s objectives.
+            </p>
+            <p>Neutral objectives include: Dragons, Barons, Heralds<br>
+            Opponent’s objectives include: Towers. Inhibitors</p>
+            <p>In its 12 years of history thus far, it has amassed around 180 million accounts worldwide and created a vibrant professional competitive play scene. Just this year’s Worlds Championship alone had a prize pool of over 2 million US dollars. Throughout its history of both casual and competitive play, we have seen a diverse range of player skills and championship results. This difference is usually attributed to differing play styles and team strategies. In the following analysis of over 9000 professional games in 2021 so far, we would like to present some insights </p>
+        </div>
+        <div id="image-container"><img src="img/map.jpeg" width="300"/><img src="img/branding.jpeg" width="300"/></div>
     </div>
 
     <div class="page" id="page2">
@@ -89,33 +95,29 @@
     </div>
 
     <div class="page" id="page3">
-        <h3>Vis group 3</h3>
-        Champion pick/ban rate</br>
-
+        <h3>Champion pick/ban rate</h3>
     </div>
 
     <div class="page" id="page4">
-        <h3>Vis group 4</h3>
-        Game length factors</br>
-        Game length vs. win rate</br>
+        <h3>Game Length vs. Winning Team's Gold Earned</h3>
     </div>
 
-    <div class="page" id="page5">
-        <h3>Vis group 5</h3>
-        Objectives</br>
-        Late game and early game factors (dragon, dragon soul, baron) vs win/loss</br>
-        Innovative visualization involving in game map could be added here. Alternatively, we can make the map a
-        background transition on scroll to zoom and pan to relevant areas
-        (like the Charles River example) and show visualizations (such as to tower
-        for tower visualization, shop for spending). Need to blur background though, also need to figure out zoom and pan
-        on discrete scroll).
-    </div>
+<!--    <div class="page" id="page5">-->
+<!--        <h3>Vis group 5</h3>-->
+<!--        Objectives</br>-->
+<!--        Late game and early game factors (dragon, dragon soul, baron) vs win/loss</br>-->
+<!--        Innovative visualization involving in game map could be added here. Alternatively, we can make the map a-->
+<!--        background transition on scroll to zoom and pan to relevant areas-->
+<!--        (like the Charles River example) and show visualizations (such as to tower-->
+<!--        for tower visualization, shop for spending). Need to blur background though, also need to figure out zoom and pan-->
+<!--        on discrete scroll).-->
+<!--    </div>-->
 
-    <div class="page" id="page6">
-        <h3>Vis group 6</h3>
-        Roles</br>
-        Gold earning and spending
-    </div>
+<!--    <div class="page" id="page6">-->
+<!--        <h3>Vis group 6</h3>-->
+<!--        Roles</br>-->
+<!--        Gold earning and spending-->
+<!--    </div>-->
 
     <div class="page" id="explore">
         <div id="explore-filters">

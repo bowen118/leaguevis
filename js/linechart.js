@@ -25,13 +25,13 @@ class LineChart {
             .append('g')
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`)
 
-        // add title
-        vis.svg.append('g')
-            .attr('class', 'title line-chart-title')
-            .append('text')
-            .text("Game Length vs. Winning Team's Gold Earned")
-            .attr('transform', `translate(${vis.width / 2}, 10)`)
-            .attr('text-anchor', 'middle')
+        // // add title
+        // vis.svg.append('g')
+        //     .attr('class', 'title line-chart-title')
+        //     .append('text')
+        //     .text("Game Length vs. Winning Team's Gold Earned")
+        //     .attr('transform', `translate(${vis.width / 2}, 10)`)
+        //     .attr('text-anchor', 'middle')
 
         // Scales and axes
         vis.x = d3.scaleBand().range([0, vis.width])

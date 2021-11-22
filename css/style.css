@@ -31,6 +31,7 @@ body {
 
 .row {
     height: 100%;
+}
   
 .buttons-container {
     display: flex;
@@ -39,6 +40,40 @@ body {
     color: white;
     font-weight: lighter;
     font-size: 16px;
+}
+
+#page1 {
+    width: 100vw;
+    padding: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#text-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+}
+
+#text-container p {
+    font-size: 16px;
+    font-weight: lighter;
+    margin-top: 20px;
+}
+
+#image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 35%;
+    align-items: flex-end;
+}
+
+#image-container img {
+    margin: 20px;
 }
 
 .columns-data {

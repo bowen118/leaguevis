@@ -78,7 +78,7 @@ class Innovative {
                     .style("top", event.pageY + "px")
                     .html(`
                  <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-                     <h3>${vis.teamsData[index]["team"]}</h3>      
+                     <h3>Team: ${vis.teamsData[index]["team"]}</h3>      
                      <p>Date: ${vis.teamsData[index]["date"]}</p>
                      <p>Game Length: ${(vis.teamsData[index]["gamelength"]/60).toFixed(0)} mins</p>      
                      <p>Bans: ${vis.teamsData[index]["ban1"]}, ${vis.teamsData[index]["ban2"]}, ${vis.teamsData[index]["ban3"]}, ${vis.teamsData[index]["ban4"]}, ${vis.teamsData[index]["ban5"]}</p>      
