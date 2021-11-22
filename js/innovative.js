@@ -18,7 +18,7 @@ class Innovative {
     initVis() {
         let vis = this
 
-        vis.margin = {top: 20, right: 50, bottom: 100, left: 175}
+        vis.margin = {top: 40, right: 175, bottom: 100, left: 175}
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom
 
@@ -33,8 +33,9 @@ class Innovative {
         vis.color = d3.scaleOrdinal().domain(normalizedColumns).range(colors)
 
         // Scales and axes
-        vis.x = d3.scaleLinear().range([0, 512])
-        vis.y = d3.scaleLinear().range([512, 0])
+        vis.dims = Math.min(vis.width, vis.height) * 3 / 4
+        vis.x = d3.scaleLinear().range([0, vis.dims])
+        vis.y = d3.scaleLinear().range([vis.dims, 0])
 
         // tooltip
         vis.tooltip = d3.select("body").append('div')
@@ -66,7 +67,7 @@ class Innovative {
             .enter()
             .append("circle")
             .attr("class", "shape-circles")
-            .attr("cx", d => vis.x(d.y) + 512/2)
+            .attr("cx", d => vis.x(d.y) + vis.width / 2 - vis.dims / 2)
             .attr("cy", d => vis.y(512 - d.x))
             .attr("r", 3.5)
             .attr("fill", (d, i) => vis.color(vis.displayData[i]))

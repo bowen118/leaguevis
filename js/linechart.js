@@ -112,7 +112,7 @@ class LineChart {
             }
         }
 
-        console.log('max', vis.max)
+        // console.log('max', vis.max)
 
         this.updateVis()
     }
@@ -140,7 +140,7 @@ class LineChart {
                 })
                 .y(function(d) {
                     if (typeof(d.gold) === 'number') {
-                        console.log(d.gold)
+                        // console.log(d.gold)
                         return vis.y(d.gold)
                     } else {
                         return 0

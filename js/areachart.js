@@ -94,13 +94,13 @@ class AreaChart {
         // Initialize stack layout
 
         let stack = d3.stack()
-            .keys(vis.championArray);
+            .keys(["key"]);
 
         //Stack data
 
         vis.stackedData = stack(vis.championArray);
 
-            console.log(this.stackedData);
+        console.log(this.stackedData);
 
         // TO-DO (Activity II) Stacked area layout
         vis.area = d3.area()
