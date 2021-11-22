@@ -1,0 +1,16 @@
+﻿tournament,region,first,second,third_fourth,total
+worlds,LCK,6,5,6,17
+worlds,LPL,3,3,5,11
+worlds,LEC,1,3,8,12
+worlds,PCS,1,0,0,1
+worlds,LCS,0,0,3,3
+msi,LCK,2,3,1,6
+msi,LPL,3,0,3,6
+msi,LEC,1,1,3,5
+msi,PCS,0,0,5,5
+msi,LCS,0,2,0,2
+total,LCK,8,8,7,23
+total,LPL,6,3,8,17
+total,LEC,2,4,11,17
+total,PCS,1,0,5,6
+total,LCS,0,2,3,5

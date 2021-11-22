@@ -21,6 +21,7 @@ body {
 
 .title {
     font-size: 20px;
+    fill: white;
 }
 
 .scatter-plot-title {
@@ -28,6 +29,9 @@ body {
     color: white;
 }
 
+.row {
+    height: 100%;
+  
 .buttons-container {
     display: flex;
     flex-direction: row;
