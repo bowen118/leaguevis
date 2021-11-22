@@ -64,10 +64,7 @@
 
 <div class="container-fluid">
     <div class="page" id="start">
-        <h1>MAIN TITLE</h1>
-        <p>
-            Can make this a full-width background that is league themed.
-        </p>
+        <h1>Professional League of Legends: 2021</h1>
     </div>
 
     <div class="page" id="page1">
@@ -93,11 +90,8 @@
 
     <div class="page" id="page3">
         <h3>Vis group 3</h3>
-        Champion picks</br>
-        Top champion picks by win rate</br>
         Champion pick/ban rate</br>
-        Top team pick bans vs bottom team pick bans</br>
-        ......</br>
+
     </div>
 
     <div class="page" id="page4">
@@ -124,9 +118,24 @@
     </div>
 
     <div class="page" id="explore">
-        <div class="buttons-container">
-            <button type="button" onclick="dataChange(true)">Players</button>
-            <button type="button" onclick="dataChange(false)">Teams</button>
+        <div id="explore-filters">
+            <div class="buttons-container">
+                Choose Data Set:
+                <button type="button" onclick="dataChange(true)">Players</button>
+                <button type="button" onclick="dataChange(false)">Teams</button>
+            </div>
+            <div class="buttons-container">
+                X Axis:
+                <select class="form-select form-select-sm columns-data" id="filter-x-axis" onchange="dataChange(true, true)"></select>
+                Y Axis:
+                <select class="form-select form-select-sm columns-data" id="filter-y-axis" onchange="dataChange(true, true)"></select>
+            </div>
+            <div class="buttons-container">
+                Specific Player:
+                <select class="form-select form-select-sm columns-data" id="filter-by-player"></select>
+                Specific Team:
+                <select class="form-select form-select-sm columns-data" id="filter-by-team"></select>
+            </div>
         </div>
     </div>
 </div>
@@ -144,7 +153,9 @@
 <!-- Load vis -->
 <script src="js/regionbarchart.js"></script>
 <script src="js/regioncountchart.js"></script>
+<script src="js/areachart.js"></script>
 <script src="js/scatterplot.js"></script>
-
+<script src="js/linechart.js"></script>
+<script src="js/innovative.js"></script>
 </body>
 </html>
