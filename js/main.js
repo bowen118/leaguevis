@@ -3,7 +3,7 @@
 * * * * * * * * * * * * * */
 
 // init global variables & switches
-let scatterPlotVis, lineChartVis, innovativeVis;
+let scatterPlotVis, areaChartVis, lineChartVis, innovativeVis;
 
 let promises = [
     d3.csv("data/players.csv"),
@@ -17,6 +17,7 @@ Promise.all(promises).then(data => initMainPage(data)).catch(err => console.log(
 function initMainPage(dataArray) {
     const [playersData, teamsData, normalizedTeamsData, coords] = dataArray
     innovativeVis = new Innovative("start", teamsData, normalizedTeamsData, coords)
+    areaChartVis = new AreaChart("page3", teamsData)
     lineChartVis = new LineChart("page4", teamsData)
     scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
