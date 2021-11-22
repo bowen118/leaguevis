@@ -13,6 +13,12 @@ body {
 }
 
 /* Visualizations */
+#explore-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .title {
     font-size: 20px;
 }
@@ -20,6 +26,19 @@ body {
 .scatter-plot-title {
     font-weight: lighter;
     color: white;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+.columns-data {
+    width: 20%;
 }
 
 /* Navigation */

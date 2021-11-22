@@ -1,6 +1,7 @@
 /* * * * * * * * * * * * * *
 *    class scatterplot     *
 * * * * * * * * * * * * * */
+let ineligibleOrdinalColumns = ["", "gameid", "league", "champion", "date", "game", "player", "playerid", "playoffs", "position", "result", "side", "year", "ban1", "ban2", "ban3", "ban4", "ban5", "team", "year"]
 
 class ScatterPlot {
     constructor(parentElement, playerData, teamData) {
@@ -31,8 +32,9 @@ class ScatterPlot {
             .attr('class', 'title scatter-plot-title')
             .append('text')
             .text("Correlation Between Damage to Champions & Earned Gold")
-            .attr('transform', `translate(${vis.width / 2}, 10)`)
+            .attr("transform", `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle')
+            .style("fill", "white")
 
         // Scales and axes
         vis.x = d3.scaleLinear().range([0, vis.width])
@@ -46,13 +48,40 @@ class ScatterPlot {
         this.wrangleData()
     }
 
-    wrangleData(isPlayer= true) {
+    wrangleData(isPlayer= true, isFilter) {
         let vis = this
-        vis.displayData = isPlayer ? vis.playerData : vis.teamData
 
-        // TODO: filter data by selected variables and get selected categories
-        let [xVar,yVar] = ["damagetochampions", "earnedgold"]
-        vis.corrArr = vis.displayData.map(function(entry) {return {"x": +entry[xVar], "y": +entry[yVar]}})
+        let xAxisSelect = document.getElementById("filter-x-axis")
+        let yAxisSelect = document.getElementById("filter-y-axis")
+
+        if (!isFilter) {
+            vis.displayData = isPlayer ? vis.playerData : vis.teamData
+            let availableAxis = Object.keys(vis.displayData[0]).filter(axis => ineligibleOrdinalColumns.indexOf(axis) < 0)
+            availableAxis.forEach(axis => {
+                let opt = document.createElement("option")
+                opt.value = axis
+                opt.innerHTML = axis
+                if (axis === "damagetochampions") {
+                    opt.selected = true
+                }
+
+                let opt2 = document.createElement("option")
+                opt2.value = axis
+                opt2.innerHTML = axis
+                if (axis === "earnedgold") {
+                    opt2.selected = true
+                }
+
+                xAxisSelect.appendChild(opt)
+                yAxisSelect.appendChild(opt2)
+            })
+        }
+
+        let selectedValX = xAxisSelect.options[xAxisSelect.selectedIndex].value
+        let selectedValY = yAxisSelect.options[yAxisSelect.selectedIndex].value
+
+        // filter data by selected variables and get selected categories
+        vis.corrArr = vis.displayData.map(function(entry) {return {"x": +entry[selectedValX], "y": +entry[selectedValY]}})
 
         this.updateVis()
     }
@@ -61,7 +90,6 @@ class ScatterPlot {
         let vis = this
 
         // set domains for scales
-        console.log(d3.max(vis.corrArr, d => d.x), d3.max(vis.corrArr, d => d.y))
         vis.x.domain([0, d3.max(vis.corrArr, d => d.x)])
         vis.y.domain([0, d3.max(vis.corrArr, d => d.y)])
 
@@ -71,12 +99,11 @@ class ScatterPlot {
         let scatterDots = vis.svg.selectAll(".scatter-dots").data(vis.corrArr)
 
         // enter & update
-        scatterDots.enter().append("circle")
-            .attr("cx", function (d) {
-                console.log(vis.x(d.x))
-                return vis.x(d.x); } )
+        scatterDots.enter().append("circle").transition()
+            .attr("cx", function (d) { return vis.x(d.x); } )
             .attr("cy", function (d) { return vis.y(d.y); } )
             .attr("r", 1)
+            .attr("class", "scatter-dots")
             .style("fill", "#69b3a2")
 
         // exit
