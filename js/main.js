@@ -19,14 +19,14 @@ function initMainPage(dataArray) {
     const [playersData, teamsData, tournament_data, normalizedTeamsData, coords] = dataArray
     regionBar = new RegionBarChart("region-bar", tournament_data)
     regionCount = new RegionCountChart("region-count")
-    innovativeVis = new Innovative("start", teamsData, normalizedTeamsData, coords)
+    // innovativeVis = new Innovative("start", teamsData, normalizedTeamsData, coords)
     areaChartVis = new AreaChart("page3", teamsData)
     lineChartVis = new LineChart("page4", teamsData)
-    scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
+    // scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
 
 function dataChange(isPlayer, isFilter = false) {
-    scatterPlotVis.wrangleData(isPlayer, isFilter)
+    // scatterPlotVis.wrangleData(isPlayer, isFilter)
 }
 
 function categoryChange() {
