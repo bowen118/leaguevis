@@ -10,6 +10,7 @@
           type='text/css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -49,9 +50,9 @@
             <li class="nav-item" onclick="scrollto('page4');">
                 <a class="nav-link" href="#">Page4</a>
             </li>
-<!--            <li class="nav-item" onclick="scrollto('page5');">-->
-<!--                <a class="nav-link" href="#">Page5</a>-->
-<!--            </li>-->
+            <li class="nav-item" onclick="scrollto('page5');">
+                <a class="nav-link" href="#">Page5</a>
+            </li>
 <!--            <li class="nav-item" onclick="scrollto('page6');">-->
 <!--                <a class="nav-link" href="#">Page6</a>-->
 <!--            </li>-->
@@ -102,16 +103,18 @@
         <h3>Game Length vs. Winning Team's Gold Earned</h3>
     </div>
 
-<!--    <div class="page" id="page5">-->
-<!--        <h3>Vis group 5</h3>-->
-<!--        Objectives</br>-->
-<!--        Late game and early game factors (dragon, dragon soul, baron) vs win/loss</br>-->
-<!--        Innovative visualization involving in game map could be added here. Alternatively, we can make the map a-->
-<!--        background transition on scroll to zoom and pan to relevant areas-->
-<!--        (like the Charles River example) and show visualizations (such as to tower-->
-<!--        for tower visualization, shop for spending). Need to blur background though, also need to figure out zoom and pan-->
-<!--        on discrete scroll).-->
-<!--    </div>-->
+    <div class="page" id="page5">
+        <select id='sideSelector' class="form-select align-self-center" style="width: 30%" onchange="sideChange()">
+            <option value="both" selected>Both sides</option>
+            <option value="red">Red side only</option>
+            <option value="blue">Blue side only</option>
+        </select>
+        <div id="slider"></div>
+        <div class="row justify-content-center">
+            <div class="col" id="kde">
+            </div>
+        </div>
+    </div>
 
 <!--    <div class="page" id="page6">-->
 <!--        <h3>Vis group 6</h3>-->
@@ -145,10 +148,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
 
 <!-- d3 -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://d3js.org/d3-collection.v1.min.js"></script>
+<script src="https://d3js.org/d3-contour.v1.min.js"></script>
 
 <!-- Load data, create visualizations -->
 <script src="js/main.js"></script>
@@ -160,5 +165,6 @@
 <script src="js/scatterplot.js"></script>
 <script src="js/linechart.js"></script>
 <script src="js/innovative.js"></script>
+<script src="js/kde.js"></script>
 </body>
 </html>
