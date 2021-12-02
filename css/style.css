@@ -144,3 +144,12 @@ body {
 #start {
     height: 90vh !important;
 }
+
+#sideSelector {
+    margin-bottom: 10px;
+    margin-left: 10%;
+}
+
+#slider {
+    margin-left: 10%;
+}

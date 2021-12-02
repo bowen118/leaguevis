@@ -59,14 +59,20 @@ class KDE {
             }
         });
         slider.style.height = "18px";
-        slider.style.width = "400px";
+        slider.style.width = `${vis.dim}px`;
         vis.start = sliderMin;
         vis.end = sliderMax;
-        slider.noUiSlider.on('update', function (values) {
+        slider.noUiSlider.on('update', function(values) {
             vis.start = values[0];
             vis.end = values[1];
             vis.wrangleData(vis.side);
         });
+
+        vis.legend = vis.svg.select("rect")
+            .enter()
+            .append("rect")
+            .attr("width", 300)
+            .attr("height", 20)
 
         vis.wrangleData(vis.side);
     }
@@ -86,8 +92,8 @@ class KDE {
         vis.filteredData = vis.useData.filter(d => d.time >= vis.start && d.time <= vis.end)
 
         vis.displayData = d3.contourDensity()
-            .x(function(d) { return vis.x(d.left); })
-            .y(function(d) { return vis.y(d.top); })
+            .x(d => vis.x(d.left))
+            .y(d => vis.y(d.top))
             .size([vis.width, vis.height])
             .bandwidth(15)
             (vis.filteredData);
@@ -99,13 +105,17 @@ class KDE {
         let vis = this;
 
         vis.color = d3.scaleLinear()
+            .domain([0, d3.max(vis.displayData, d => d.value)]);
+        vis.opacity = d3.scaleLinear()
             .domain([0, d3.max(vis.displayData, d => d.value)])
+            .range([0.05, 0.3]);
+
         if (vis.side === "red") {
             vis.color.range(["white", "red"]);
         } else if (vis.side === "blue") {
             vis.color.range(["white", "blue"]);
         } else {
-            vis.color.range(["white", "purple"])
+            vis.color.range(["white", "#DA70D6"]);
         }
 
         vis.kde = vis.svg
@@ -117,8 +127,8 @@ class KDE {
             .merge(vis.kde)
             // .transition().duration(800)
             .attr("d", d3.geoPath())
-            .attr("fill", function(d) { return vis.color(d.value); })
-            .attr("opacity", 0.1);
+            .attr("fill", d => vis.color(d.value))
+            .attr("opacity", d => vis.opacity(d.value));
 
         vis.kde.exit().remove();
     }
