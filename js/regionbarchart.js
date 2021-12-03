@@ -19,7 +19,7 @@ class RegionBarChart {
         // console.log(vis.data)
 
         // Define SVG parameters
-        vis.margin = {top: 60, right: 40, bottom: 100, left: 40};
+        vis.margin = {top: 60, right: 40, bottom: 155, left: 40};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -91,6 +91,14 @@ class RegionBarChart {
                 return labels[d]
             });
 
+        vis.regionTickLabels = {
+            LCK: "LOL Champions Korea (LCK)",
+            LPL: "LOL Pro League (LPL)",
+            LEC: "LOL European Championship (LEC)",
+            PCS: "Pacific Championship Series (PCS)",
+            LCS: "LOL Championship Series (LCS)"
+        }
+
         vis.wrangleData("total");
     }
 
@@ -109,7 +117,8 @@ class RegionBarChart {
         let stack = d3.stack().keys(vis.keys)(vis.displayData);
         // console.log(stack);
 
-        vis.ordinalScale.domain(vis.displayData.map(d => d.region))
+        vis.ordinalScale.domain(vis.displayData.map(d => d.region));
+        vis.ordinalAxis.tickFormat(d => vis.regionTickLabels[d]);
         vis.numericScale.domain([0, d3.max(vis.displayData, d => d.total)]);
         // vis.colorScale.domain(vis.keys)
 
@@ -117,8 +126,9 @@ class RegionBarChart {
         vis.handleXAxisUpdate.transition().duration(transitionDuration)
             .call(vis.ordinalAxis)
             .selectAll("text")
-            .style("text-anchor", "middle");
-        vis.numericAxis.tickFormat(d3.format(",d"));
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(-30)");
+        vis.numericAxis.ticks(vis.numericScale.domain()[1]).tickFormat(d3.format(",d"));
         vis.handleYAxisUpdate.transition().duration(transitionDuration)
             .call(vis.numericAxis);
 
@@ -130,12 +140,22 @@ class RegionBarChart {
                 .attr("y", function(d) { return vis.numericScale(d[1]); })
                 .attr("height", function(d) { return vis.numericScale(d[0]) - vis.numericScale(d[1]); })
             bar.enter().append("rect")
-                .attr("class", function(d) { return "bar bar-" + key; })
+                .attr("class", function(d) { return `bar bar-${key} bar-${d.data.region}`; })
                 .attr("x", function(d) { return vis.ordinalScale(d.data.region); })
                 .attr("y", function(d) { return vis.numericScale(d[1]); })
                 .attr("height", function(d) { return vis.numericScale(d[0]) - vis.numericScale(d[1]); })
                 .attr("width", vis.ordinalScale.bandwidth())
-                .attr("fill", vis.colorScale(key));
+                .attr("fill", vis.colorScale(key))
+                .on("mouseover", function(event, d) {
+                    d3.selectAll(`.bar-${d.data.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                    d3.selectAll(`#wins-${d.data.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                    d3.selectAll(`#losses-${d.data.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                })
+                .on("mouseout", function(event, d) {
+                    d3.selectAll(`.bar-${d.data.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                    d3.selectAll(`#wins-${d.data.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                    d3.selectAll(`#losses-${d.data.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                });
         })
     }
 }

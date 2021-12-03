@@ -66,7 +66,7 @@ class RegionCountChart {
             .range([0, vis.width / 4]);
 
         vis.colorScale = d3.scaleOrdinal()
-            .range(["#98abc5", "#a05d56"]);
+            .range(["#A1E8AF", "#EEFFDB"]);
 
         vis.ordinalAxis = d3.axisRight()
             .scale(vis.ordinalScale);
@@ -140,12 +140,22 @@ class RegionCountChart {
             let bar = vis.svg.selectAll(".bar-" + key)
                 .data(stack[index], d => d.data.region + "-" + key);
             bar.enter().append("rect")
-                .attr("class", function(d) { return "bar bar-" + key; })
+                .attr("class", function(d) { return `bar bar-${key} bar-${d.data.region}`; })
                 .attr("y", function(d) { return vis.ordinalScale(d.data.region); })
                 .attr("x", function(d) { return vis.numericScale(d[0]); })
                 .attr("width", function(d) { return vis.numericScale(d[1]) - vis.numericScale(d[0]); })
                 .attr("height", vis.ordinalScale.bandwidth())
-                .attr("fill", vis.colorScale(key));
+                .attr("fill", vis.colorScale(key))
+                .on("mouseover", function(event, d) {
+                    d3.selectAll(`.bar-${d.data.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                    d3.selectAll(`#wins-${d.data.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                    d3.selectAll(`#losses-${d.data.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                })
+                .on("mouseout", function(event, d) {
+                    d3.selectAll(`.bar-${d.data.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                    d3.selectAll(`#wins-${d.data.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                    d3.selectAll(`#losses-${d.data.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                });
         })
 
         vis.svg.selectAll(".winrate-labels")
@@ -155,7 +165,7 @@ class RegionCountChart {
             .attr("y", d => vis.ordinalScale(d.region) + vis.ordinalScale.bandwidth() / 2)
             .attr("x", "0.3rem")
             .attr("dy", "0.3rem")
-            .attr("fill", "white")
+            .attr("fill", "black")
             .style("font-size", 11)
             .text(d => d3.format(".0%")(d.winrate));
 
@@ -168,7 +178,7 @@ class RegionCountChart {
             .attr("x", vis.width / 4)
             .attr("dx", "-0.3rem")
             .attr("dy", "0.3rem")
-            .attr("fill", "white")
+            .attr("fill", "black")
             .style("font-size", 11)
             .text(d => d3.format(".0%")(d.lossrate));
 
@@ -177,12 +187,32 @@ class RegionCountChart {
             .enter().append("g")
             .attr("id", d => `wins-${d.region}`)
             .attr("transform", d => `translate(${vis.width / 4 + 50}, ${vis.ordinalScale(d.region)})`)
+            .on("mouseover", function(event, d) {
+                d3.selectAll(`.bar-${d.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                d3.selectAll(`#wins-${d.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                d3.selectAll(`#losses-${d.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+            })
+            .on("mouseout", function(event, d) {
+                d3.selectAll(`.bar-${d.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                d3.selectAll(`#wins-${d.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                d3.selectAll(`#losses-${d.region}`).attr("stroke-width", 0).attr("opacity", 1);
+            });
 
         vis.svg.selectAll(".lossdots")
             .data(vis.displayData)
             .enter().append("g")
             .attr("id", d => `losses-${d.region}`)
             .attr("transform", d => `translate(${vis.width / 4 + 50}, ${vis.ordinalScale(d.region)})`)
+            .on("mouseover", function(event, d) {
+                d3.selectAll(`.bar-${d.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                d3.selectAll(`#wins-${d.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+                d3.selectAll(`#losses-${d.region}`).attr("stroke", "black").attr("stroke-width", 2).attr("opacity", 0.6);
+            })
+            .on("mouseout", function(event, d) {
+                d3.selectAll(`.bar-${d.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                d3.selectAll(`#wins-${d.region}`).attr("stroke-width", 0).attr("opacity", 1);
+                d3.selectAll(`#losses-${d.region}`).attr("stroke-width", 0).attr("opacity", 1);
+            });
 
         vis.displayData.forEach(d => {
             let radius = vis.width * 2 / 3 / 60;
