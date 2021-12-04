@@ -39,23 +39,23 @@
                 <a class="nav-link" href="#">Start</a>
             </li>
             <li class="nav-item" onclick="scrollto('page1');">
-                <a class="nav-link" href="#">Page1</a>
-            </li>
-            <li class="nav-item" onclick="scrollto('page2');">
-                <a class="nav-link" href="#">Page2</a>
+                <a class="nav-link" href="#">1</a>
             </li>
             <li class="nav-item" onclick="scrollto('page3');">
-                <a class="nav-link" href="#">Page3</a>
+                <a class="nav-link" href="#">2</a>
             </li>
             <li class="nav-item" onclick="scrollto('page4');">
-                <a class="nav-link" href="#">Page4</a>
+                <a class="nav-link" href="#">3</a>
             </li>
             <li class="nav-item" onclick="scrollto('page5');">
-                <a class="nav-link" href="#">Page5</a>
+                <a class="nav-link" href="#">4</a>
             </li>
 <!--            <li class="nav-item" onclick="scrollto('page6');">-->
 <!--                <a class="nav-link" href="#">Page6</a>-->
 <!--            </li>-->
+            <li class="nav-item" onclick="scrollto('page2');">
+                <a class="nav-link" href="#">5</a>
+            </li>
             <li class="nav-item" onclick="scrollto('explore');">
                 <a class="nav-link" href="#">Explore</a>
             </li>
@@ -81,31 +81,17 @@
         <div id="image-container"><img src="img/map.jpeg" width="300"/><img src="img/branding.jpeg" width="300"/></div>
     </div>
 
-    <div class="page" id="page2">
-        <h3>Some regions consistently do better than others</h3>
-        <div class="row justify-content-center">
-            <div class="col-6" id="region-bar">
-                <select id='categorySelector' class="form-select align-self-center" style="width: 100%" onchange="categoryChange()">
-                    <option value="total" selected>Total</option>
-                    <option value="worlds">World Championship</option>
-                    <option value="msi">Mid-Season Invitationals</option>
-                </select>
-            </div>
-            <div class="col-6" id="region-count"></div>
-        </div>
-    </div>
-
     <div class="page" id="page3">
-        <h3>Champions who _____ are more likely to be banned</h3>
+        <h3>Champions who _____ are more likely to be picked/banned</h3>
         <div class="row justify-content-center">
             <div class="col-8" id="area-banrates"></div>
             <div class="col-4 descriptions">
-                Explain champion bans
+                Explain champion picks/bans
                 <br/>
-                The left area chart shows champions that are unusually likely to be banned in 2021 until November.
-                We define "unusually likely" as comprising at least 5% of the bans in at least one month.
+                The left area chart shows champions that are unusually likely to be picked/banned in 2021 until November.
+                We define "unusually likely" as being at least 6 times more likely to be picked/banned than random choice.
                 <br/>
-                The most likely to get banned champions seem to share...
+                The most likely to get picked/banned champions seem to share...
             </div>
         </div>
     </div>
@@ -115,6 +101,7 @@
     </div>
 
     <div class="page" id="page5">
+        <h3>Kills are concentrated around objectives and the middle lane</h3>
         <div class="row">
             <div class="col-6">
                 <select id='sideSelector' class="form-select align-self-center" style="width: 30%" onchange="sideChange()">
@@ -139,6 +126,20 @@
 <!--        Roles</br>-->
 <!--        Gold earning and spending-->
 <!--    </div>-->
+
+    <div class="page" id="page2">
+        <h3>Even in profession play, some regions consistently do better than others</h3>
+        <div class="row justify-content-center">
+            <div class="col-6" id="region-bar">
+                <select id='categorySelector' class="form-select align-self-center" style="width: 100%" onchange="categoryChange()">
+                    <option value="total" selected>Total</option>
+                    <option value="worlds">World Championship</option>
+                    <option value="msi">Mid-Season Invitationals</option>
+                </select>
+            </div>
+            <div class="col-6" id="region-count"></div>
+        </div>
+    </div>
 
     <div class="page" id="explore">
         <div id="explore-filters">

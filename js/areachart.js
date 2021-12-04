@@ -12,7 +12,8 @@ class AreaChart {
         this.bans = this.data.map(function(d) {
             return {
                 month: d3.timeFormat("%b")(d3.timeParse("%Y-%m-%d %H:%M:%S")(d.date)),
-                bans: [d.ban1, d.ban2, d.ban3, d.ban4, d.ban5]
+                // bans: [d.ban1, d.ban2, d.ban3, d.ban4, d.ban5]
+                bans: [d.ban1, d.ban2, d.ban3, d.ban4, d.ban5, d.champ1, d.champ2, d.champ3, d.champ4, d.champ5]
             }
         })
         this.bans = Array.from(d3.group(this.bans, d => d.month), ([key, value]) => ({key, value}))
@@ -102,7 +103,7 @@ class AreaChart {
         vis.keysForPlot = []
         vis.displayData.forEach(m => {
             for (let champ of vis.keys) {
-                if (m[champ] > 0.05) {
+                if (m[champ] > 1 / 157 * 6) {
                     vis.champs[champ] *= 0;
                     vis.keysForPlot.push(champ)
                 }
@@ -117,7 +118,7 @@ class AreaChart {
         let vis = this;
 
         vis.x.domain(d3.extent(vis.displayData, d => d.month));
-        vis.y.domain([0, 0.4]);
+        vis.y.domain([0, 0.5]);
 
         vis.xAxis.tickFormat(d3.timeFormat("%b"));
 
@@ -174,7 +175,7 @@ class AreaChart {
         vis.svg.append('g')
             .attr('class', 'title area-chart-title')
             .append('text')
-            .text(`In 2021, ${vis.keysForPlot.length} of the 157 champs were banned unusually often`)
+            .text(`In 2021, ${vis.keysForPlot.length} of the 157 champs were picked/banned unusually often`)
             .attr('transform', `translate(${vis.width / 2}, -20)`)
             .attr('text-anchor', 'middle')
 
