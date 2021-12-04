@@ -157,3 +157,15 @@ body {
 .descriptions {
     text-align: left;
 }
+
+.area-col {
+    height: 100%;
+}
+
+.area-banrates {
+    height: 50%;
+}
+
+.area-histogram {
+    height: 50%;
+}
