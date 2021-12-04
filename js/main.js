@@ -21,9 +21,9 @@ function initMainPage(dataArray) {
     regionBar = new RegionBarChart("region-bar", tournament_data)
     regionCount = new RegionCountChart("region-count")
     innovativeVis = new Innovative("start", teamsData, normalizedTeamsData, coords)
-    // areaChartVis = new AreaChart("page3", teamsData)
+    areaChartVis = new AreaChart("area-banrates", teamsData)
     lineChartVis = new LineChart("page4", teamsData)
-    // kdeVis = new KDE("kde", killCoords)
+    kdeVis = new KDE("kde", killCoords)
     // scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
 

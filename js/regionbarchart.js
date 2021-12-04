@@ -34,7 +34,8 @@ class RegionBarChart {
         vis.svg.append('g')
             .attr('class', 'title bar-title')
             .append('text')
-            .text("Championship titles by region")
+            .text("The LCK region consistently does better in world tournaments")
+            .attr("font-size", "12pt")
             .attr('transform', `translate(${vis.width / 2}, -30)`)
             .attr('text-anchor', 'middle');
 

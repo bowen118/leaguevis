@@ -96,7 +96,18 @@
     </div>
 
     <div class="page" id="page3">
-        <h3>Champion pick/ban rate</h3>
+        <h3>Champions who _____ are more likely to be banned</h3>
+        <div class="row justify-content-center">
+            <div class="col-8" id="area-banrates"></div>
+            <div class="col-4 descriptions">
+                Explain champion bans
+                <br/>
+                The left area chart shows champions that are unusually likely to be banned in 2021 until November.
+                We define "unusually likely" as comprising at least 5% of the bans in at least one month.
+                <br/>
+                The most likely to get banned champions seem to share...
+            </div>
+        </div>
     </div>
 
     <div class="page" id="page4">
@@ -161,6 +172,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://d3js.org/d3-collection.v1.min.js"></script>
 <script src="https://d3js.org/d3-contour.v1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
 
 <!-- Load data, create visualizations -->
 <script src="js/main.js"></script>

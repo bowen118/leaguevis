@@ -53,7 +53,8 @@ class RegionCountChart {
         vis.svg.append('g')
             .attr('class', 'title bar-title')
             .append('text')
-            .text("2021 World Championship win rates by region")
+            .text("In 2021, LCK and LPL had much much higher win rates than other regions")
+            .attr("font-size", "11pt")
             .attr('transform', `translate(${vis.width / 2}, -30)`)
             .attr('text-anchor', 'middle');
 

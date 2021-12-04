@@ -153,3 +153,7 @@ body {
 #slider {
     margin-left: 10%;
 }
+
+.descriptions {
+    text-align: left;
+}
