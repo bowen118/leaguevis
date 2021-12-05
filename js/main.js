@@ -22,13 +22,13 @@ function initMainPage(dataArray) {
     regionCount = new RegionCountChart("region-count")
     innovativeVis = new Innovative("start", teamsData, normalizedTeamsData, coords)
     areaChartVis = new AreaChart("area-banrates", "area-histogram", teamsData)
-    dotPlotVis = new DotPlot("page4", teamsData)
+    dotPlotVis = new DotPlot("gold-dotplot", "farm-dotplot", "xp-dotplot", "kills-dotplot", teamsData)
     kdeVis = new KDE("kde", killCoords)
-    // scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
+    scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
 
 function dataChange(isPlayer, isFilter = false) {
-    // scatterPlotVis.wrangleData(isPlayer, isFilter)
+    scatterPlotVis.wrangleData(isPlayer, isFilter)
 }
 
 function categoryChange() {

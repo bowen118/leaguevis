@@ -169,3 +169,7 @@ body {
 .area-histogram {
     height: 50%;
 }
+
+.dotplot-row {
+    height: 50%;
+}

@@ -55,13 +55,21 @@ class AreaChart {
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append('g')
-            .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`)
+            .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
         vis.svg2 = d3.select("#" + vis.parentElement2).append("svg")
             .attr("width", vis.width2 + vis.margin2.left + vis.margin2.right)
             .attr("height", vis.height2 + vis.margin2.top + vis.margin2.bottom)
             .append('g')
-            .attr('transform', `translate (${vis.margin2.left}, ${vis.margin2.top})`)
+            .attr('transform', `translate (${vis.margin2.left}, ${vis.margin2.top})`);
+
+        vis.svg2.append('g')
+            .attr('class', 'title bar-title')
+            .append('text')
+            .text("Distribution of champion pick/bans in 2021")
+            .attr("font-size", "12pt")
+            .attr('transform', `translate(${vis.width / 2}, 10)`)
+            .attr('text-anchor', 'middle');
 
         // Scales and axes
         vis.x = d3.scaleTime()

@@ -6,8 +6,8 @@ let ineligibleOrdinalColumns = ["", "gameid", "league", "champion", "date", "gam
 class ScatterPlot {
     constructor(parentElement, playerData, teamData) {
         this.parentElement = parentElement
-        this.playerData = playerData
-        this.teamData = teamData
+        this.playerData = playerData.filter(d => d.league === "WCS")
+        this.teamData = teamData.filter(d => d.league === "WCS")
         this.displayData = []
 
         this.initVis()
@@ -102,7 +102,7 @@ class ScatterPlot {
         scatterDots.enter().append("circle").transition()
             .attr("cx", function (d) { return vis.x(d.x); } )
             .attr("cy", function (d) { return vis.y(d.y); } )
-            .attr("r", 1)
+            .attr("r", 3)
             .attr("class", "scatter-dots")
             .style("fill", "#69b3a2")
 
