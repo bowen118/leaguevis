@@ -3,7 +3,7 @@
 * * * * * * * * * * * * * */
 
 // init global variables & switches
-let regionBar, regionCount, scatterPlotVis, areaChartVis, champHistogram, lineChartVis, kdeVis, innovativeVis;
+let regionBar, regionCount, scatterPlotVis, areaChartVis, dotPlotVis, lineChartVis, kdeVis, innovativeVis;
 
 let promises = [
     d3.csv("data/players.csv"),
@@ -22,7 +22,7 @@ function initMainPage(dataArray) {
     regionCount = new RegionCountChart("region-count")
     innovativeVis = new Innovative("start", teamsData, normalizedTeamsData, coords)
     areaChartVis = new AreaChart("area-banrates", "area-histogram", teamsData)
-    lineChartVis = new LineChart("page4", teamsData)
+    dotPlotVis = new DotPlot("page4", teamsData)
     kdeVis = new KDE("kde", killCoords)
     // scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }

@@ -35,7 +35,6 @@ class AreaChart {
                 count: this.allRates[champ]
             }
         })
-        console.log(this.histData)
 
         this.initVis()
     }
