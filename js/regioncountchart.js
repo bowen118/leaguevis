@@ -77,6 +77,7 @@ class RegionCountChart {
             .attr("class", "y-axis axis")
             .attr("transform", `translate(${vis.width / 4}, 0)`);
 
+        // Legend
         let legend = vis.svg.append("g")
             .attr("font-family", "sans-serif")
             .attr("font-size", 10)
@@ -111,6 +112,7 @@ class RegionCountChart {
     wrangleData() {
         let vis = this;
 
+        // Calculate data
         vis.displayData = vis.data;
         vis.displayData.forEach(d => {
             d["winrate"] = d.wins / d.totals;
@@ -119,7 +121,6 @@ class RegionCountChart {
             d["wingames"] = Array(d.wins).fill(1);
             d["lossgames"] = Array(d.losses).fill(0);
         });
-        // console.log(vis.displayData)
 
         vis.updateVis();
     }
@@ -128,8 +129,8 @@ class RegionCountChart {
         let vis = this;
 
         let stack = d3.stack().keys(vis.keys)(vis.displayData);
-        // console.log(stack)
 
+        // Define scale domains
         vis.ordinalScale.domain(vis.displayData.map(d => d.region))
         vis.numericScale.domain([0, 1]);
 
@@ -138,6 +139,7 @@ class RegionCountChart {
             .style("text-anchor", "middle")
             .attr("transform", "translate(10, 0)");
 
+        // Draw bars for win rate
         vis.keys.forEach((key, index) => {
             let bar = vis.svg.selectAll(".bar-" + key)
                 .data(stack[index], d => d.data.region + "-" + key);
@@ -160,6 +162,7 @@ class RegionCountChart {
                 });
         })
 
+        // Add labels to bars
         vis.svg.selectAll(".winrate-labels")
             .data(vis.displayData)
             .enter().append("text")
@@ -184,6 +187,7 @@ class RegionCountChart {
             .style("font-size", 11)
             .text(d => d3.format(".0%")(d.lossrate));
 
+        // Draw dots for games
         vis.svg.selectAll(".windots")
             .data(vis.displayData)
             .enter().append("g")

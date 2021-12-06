@@ -107,6 +107,7 @@ class RegionBarChart {
     wrangleData(category) {
         let vis = this;
 
+        // Filter and sort
         vis.displayData = vis.data.filter(d => d.tournament === category);
         vis.displayData = vis.displayData.sort((a, b) => b.total - a.total);
 
@@ -116,14 +117,15 @@ class RegionBarChart {
     updateVis() {
         let vis = this;
 
+        // Get stacked barchart
         let stack = d3.stack().keys(vis.keys)(vis.displayData);
-        // console.log(stack);
 
+        // Define domains for scales
         vis.ordinalScale.domain(vis.displayData.map(d => d.region));
         vis.ordinalAxis.tickFormat(d => vis.regionTickLabels[d]);
         vis.numericScale.domain([0, d3.max(vis.displayData, d => d.total)]);
-        // vis.colorScale.domain(vis.keys)
 
+        // Draw axes
         let transitionDuration = 800;
         vis.handleXAxisUpdate.transition().duration(transitionDuration)
             .call(vis.ordinalAxis)
@@ -134,6 +136,7 @@ class RegionBarChart {
         vis.handleYAxisUpdate.transition().duration(transitionDuration)
             .call(vis.numericAxis);
 
+        // Draw bar chart
         vis.keys.forEach((key, index) => {
             let bar = vis.svg.selectAll(".bar-" + key)
                 .data(stack[index], d => d.data.region + "-" + key);
