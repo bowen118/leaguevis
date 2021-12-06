@@ -3,6 +3,8 @@
 * * * * * * * * * * * * * */
 
 // references and adapts code from: https://www.d3-graph-gallery.com/graph/lollipop_cleveland.html
+// dot plot that compares various differences at 10 min vs 15 min into the game in order
+// to develop a better sense of winning/losing team statistics at these points.
 
 class DotPlot {
     constructor(parentElement, parentElement2, parentElement3, parentElement4, teamsData) {
@@ -49,6 +51,7 @@ class DotPlot {
             .append('g')
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`)
 
+        // add titles to each chart
         vis.svg.append('g')
             .attr('class', 'title bar-title')
             .append('text')
@@ -115,6 +118,7 @@ class DotPlot {
             .attr("class", "x-axis axis")
             .attr("transform", "translate(0," + (vis.height) + ")")
 
+        // color scale for legend and dots
         vis.colorScale = d3.scaleOrdinal()
             .range(["#A1E8AF", "#EEFFDB", "#FF6863", "#FFDCD1"]);
 
@@ -157,6 +161,7 @@ class DotPlot {
     wrangleData() {
         let vis = this;
 
+        // filter data and only have worlds data as well as relevant columns to each chart
         let worldsGames = this.data.filter(d => d.league === "WCS");
         worldsGames.forEach((d, i) => {
             vis.goldData.push({
@@ -199,6 +204,7 @@ class DotPlot {
     updateVis() {
         let vis = this
 
+        // add legend
         function appendLegend(legend, variable) {
             legend.append("rect")
                 .attr("x", vis.width - 19)
@@ -226,6 +232,7 @@ class DotPlot {
         appendLegend(vis.legend3, "XP");
         appendLegend(vis.legend4, "kills");
 
+        // define domains
         vis.x.domain([d3.min(vis.goldData, d => Math.min(d.golddiffat10, d.golddiffat15)), d3.max(vis.goldData, d => Math.max(d.golddiffat10, d.golddiffat15))]);
         vis.x2.domain([d3.min(vis.farmData, d => Math.min(d.farmdiffat10, d.farmdiffat15)), d3.max(vis.farmData, d => Math.max(d.farmdiffat10, d.farmdiffat15))]);
         vis.x3.domain([d3.min(vis.xpData, d => Math.min(d.xpdiffat10, d.xpdiffat15)), d3.max(vis.xpData, d => Math.max(d.xpdiffat10, d.xpdiffat15))]);
@@ -236,6 +243,7 @@ class DotPlot {
         vis.y4.domain(vis.killsData.map(d => d.id));
 
 
+        // add axes to relevant places
         vis.xAxis.scale(vis.x);
         vis.svg.select(".x-axis").call(vis.xAxis);
         vis.xAxis2.scale(vis.x2);
@@ -291,6 +299,7 @@ class DotPlot {
                 });
         }
 
+        // draw all plots
         drawDotPlot(vis.svg, vis.goldData, vis.x, vis.y, "golddiffat10", "golddiffat15");
         drawDotPlot(vis.svg2, vis.farmData, vis.x2, vis.y2,"farmdiffat10", "farmdiffat15");
         drawDotPlot(vis.svg3, vis.xpData, vis.x3, vis.y3,"xpdiffat10", "xpdiffat15");
