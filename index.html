@@ -41,16 +41,16 @@
             <li class="nav-item" onclick="scrollto('page1');">
                 <a class="nav-link" href="#">1</a>
             </li>
-            <li class="nav-item" onclick="scrollto('page3');">
+            <li class="nav-item" onclick="scrollto('page2');">
                 <a class="nav-link" href="#">2</a>
             </li>
-            <li class="nav-item" onclick="scrollto('page4');">
+            <li class="nav-item" onclick="scrollto('page3');">
                 <a class="nav-link" href="#">3</a>
             </li>
-            <li class="nav-item" onclick="scrollto('page5');">
+            <li class="nav-item" onclick="scrollto('page4');">
                 <a class="nav-link" href="#">4</a>
             </li>
-            <li class="nav-item" onclick="scrollto('page2');">
+            <li class="nav-item" onclick="scrollto('page5');">
                 <a class="nav-link" href="#">5</a>
             </li>
             <li class="nav-item" onclick="scrollto('explore');">
@@ -62,8 +62,10 @@
 
 <div class="container-fluid">
     <div class="page" id="start">
-        <h1>Professional League of Legends: 2021</h1>
+        <h1>Welcome to Summoner's Rift - 2021 Pro League of Legends Visualizations</h1>
     </div>
+
+    <h4>A colorized visualization of the League of Legends game icon, with each dot representing a game. The color of the dot corresponds to the most important factor in the team's victory. We can observe that towers and heralds seem to be significant factors in the outcome of a game.</h4>
 
     <div class="page" id="page1">
         <div id="text-container">
@@ -78,8 +80,23 @@
         <div id="image-container"><img src="img/map.jpeg" width="300"/><img src="img/branding.jpeg" width="300"/></div>
     </div>
 
+    <div class="page" id="page2">
+        <h3>In the world of professional play, one region tends to do better than the others…</h3>
+        <div class="row justify-content-center">
+            <div class="col-6" id="region-bar">
+                <select id='categorySelector' class="form-select align-self-center" style="width: 100%" onchange="categoryChange()">
+                    <option value="total" selected>Total</option>
+                    <option value="worlds">World Championship</option>
+                    <option value="msi">Mid-Season Invitationals</option>
+                </select>
+            </div>
+            <div class="col-6" id="region-count"></div>
+        </div>
+        <h3>Let’s explore some of the factors of the game that make this the case!</h3>
+    </div>
+
     <div class="page" id="page3">
-        <h3>Champions who _____ are more likely to be picked/banned</h3>
+        <h3>In the beginning, all teams strategize by banning and picking champions to play. By taking a look at the most banned champions and when they were likely to be most banned, _______</h3>
         <div class="row justify-content-center">
             <div class="col-8 area-col">
                 <div class="row justify-content-center area-banrates">
@@ -101,18 +118,18 @@
     </div>
 
     <div class="page" id="page4">
-        <h3>Factors that contribute to game win</h3>
+        <h3>Here are some other factors that contribute to game win...</h3>
         <div class="row justify-content-center dotplot-row">
             <div class="col-4" id="gold-dotplot"></div>
             <div class="col-4" id="farm-dotplot"></div>
-            <div class="col-4">
+            <div class="col-4 descriptions">
                 Comments here
             </div>
         </div>
         <div class="row justify-content-center dotplot-row">
             <div class="col-4" id="xp-dotplot"></div>
             <div class="col-4" id="kills-dotplot"></div>
-            <div class="col-4">
+            <div class="col-4 descriptions">
                 More comments here
             </div>
         </div>
@@ -133,23 +150,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 descriptions">
                 Comments
             </div>
-        </div>
-    </div>
-
-    <div class="page" id="page2">
-        <h3>Even in profession play, some regions consistently do better than others</h3>
-        <div class="row justify-content-center">
-            <div class="col-6" id="region-bar">
-                <select id='categorySelector' class="form-select align-self-center" style="width: 100%" onchange="categoryChange()">
-                    <option value="total" selected>Total</option>
-                    <option value="worlds">World Championship</option>
-                    <option value="msi">Mid-Season Invitationals</option>
-                </select>
-            </div>
-            <div class="col-6" id="region-count"></div>
         </div>
     </div>
 
@@ -193,7 +196,6 @@
 <script src="js/regioncountchart.js"></script>
 <script src="js/areachart.js"></script>
 <script src="js/scatterplot.js"></script>
-<script src="js/linechart.js"></script>
 <script src="js/innovative.js"></script>
 <script src="js/kde.js"></script>
 <script src="js/dotplot.js"></script>

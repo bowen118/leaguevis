@@ -7,6 +7,15 @@ body {
     font-family: "Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;
 }
 
+h4 {
+    font-weight: lighter;
+    color: #c89b3c;
+}
+
+h3 {
+    padding: 10px;
+}
+
 .container-fluid {
     padding: 0;
 }

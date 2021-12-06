@@ -55,6 +55,7 @@ class RegionCountChart {
             .append('text')
             .text("In 2021, LCK and LPL had much much higher win rates than other regions")
             .attr("font-size", "11pt")
+            .attr("font-weight", "lighter")
             .attr('transform', `translate(${vis.width / 2}, -30)`)
             .attr('text-anchor', 'middle');
 

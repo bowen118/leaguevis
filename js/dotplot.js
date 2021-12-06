@@ -53,6 +53,7 @@ class DotPlot {
             .attr('class', 'title bar-title')
             .append('text')
             .text("Gold")
+            .attr("font-weight", "lighter")
             .attr("font-size", "12pt")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');
@@ -60,6 +61,7 @@ class DotPlot {
             .attr('class', 'title bar-title')
             .append('text')
             .text("Farm")
+            .attr("font-weight", "lighter")
             .attr("font-size", "12pt")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');
@@ -67,6 +69,7 @@ class DotPlot {
             .attr('class', 'title bar-title')
             .append('text')
             .text("Experience points (XP)")
+            .attr("font-weight", "lighter")
             .attr("font-size", "12pt")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');
@@ -74,6 +77,7 @@ class DotPlot {
             .attr('class', 'title bar-title')
             .append('text')
             .text("Kills")
+            .attr("font-weight", "lighter")
             .attr("font-size", "12pt")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');

@@ -68,6 +68,7 @@ class AreaChart {
             .append('text')
             .text("Distribution of champion pick/bans in 2021")
             .attr("font-size", "12pt")
+            .attr("font-weight", "lighter")
             .attr('transform', `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle');
 
@@ -229,6 +230,7 @@ class AreaChart {
         vis.svg.append('g')
             .attr('class', 'title area-chart-title')
             .append('text')
+            .attr("font-weight", "lighter")
             .text(`In 2021, ${vis.keysForPlot.length} of the 157 champs were picked/banned unusually often`)
             .attr('transform', `translate(${vis.width / 2}, -20)`)
             .attr('text-anchor', 'middle')

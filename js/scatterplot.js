@@ -34,9 +34,10 @@ class ScatterPlot {
             .attr('class', 'title scatter-plot-title')
             .append('text')
             .text("Correlation Between Damage to Champions & Earned Gold")
+            .attr("font-weight", "lighter")
             .attr("transform", `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle')
-            .style("fill", "white")
+            .style("fill", "#c89b3c")
 
         // Scales and axes
         vis.x = d3.scaleLinear().range([0, vis.width])
