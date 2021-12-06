@@ -42,6 +42,30 @@ class Innovative {
             .attr('class', "tooltip")
             .attr('id', 'circlesTooltip')
 
+        // legend
+        vis.legend = vis.svg.append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 8)
+            .attr("text-anchor", "end")
+            .selectAll("g")
+            .data(normalizedColumns)
+            .enter().append("g")
+            .attr("transform", function(d, i) { return `translate(-30, ${vis.height - i * 20 - 30})`; })
+
+        vis.legend.append("rect")
+            .attr("x", vis.width - 19)
+            .attr("width", 28)
+            .attr("height", 19)
+            .attr("fill", vis.color);
+        vis.legend.append("text")
+            .attr("fill", "#c89b3c")
+            .attr("x", vis.width - 25)
+            .attr("y", 10)
+            .attr("dy", "0.32em")
+            .text(function(d) {
+                return d
+            });
+
         this.wrangleData()
     }
 

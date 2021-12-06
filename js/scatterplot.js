@@ -130,7 +130,7 @@ class ScatterPlot {
             .attr("cx", function (d) { return vis.x(+d[vis.selectedValX]); } )
             .attr("cy", function (d) { return vis.y(+d[vis.selectedValY]); } )
             .attr("r", 3)
-            .style("fill", "#69b3a2")
+            .style("fill", "#c89b3c")
     }
 
     alterDataState(dataState) {
