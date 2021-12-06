@@ -35,7 +35,7 @@ class RegionBarChart {
             .attr('class', 'title bar-title')
             .append('text')
             .text("The LCK region consistently does better in world tournaments")
-            .attr("font-size", "12pt")
+            .attr("font-size", "20px")
             .attr("font-weight", "lighter")
             .attr('transform', `translate(${vis.width / 2}, -30)`)
             .attr('text-anchor', 'middle');

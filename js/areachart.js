@@ -67,7 +67,7 @@ class AreaChart {
             .attr('class', 'title bar-title')
             .append('text')
             .text("Distribution of champion pick/bans in 2021")
-            .attr("font-size", "12pt")
+            .attr("font-size", "16px")
             .attr("font-weight", "lighter")
             .attr('transform', `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle');

@@ -54,7 +54,7 @@ class DotPlot {
             .append('text')
             .text("Gold")
             .attr("font-weight", "lighter")
-            .attr("font-size", "12pt")
+            .attr("font-size", "16px")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');
         vis.svg2.append('g')
@@ -62,7 +62,7 @@ class DotPlot {
             .append('text')
             .text("Farm")
             .attr("font-weight", "lighter")
-            .attr("font-size", "12pt")
+            .attr("font-size", "16px")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');
         vis.svg3.append('g')
@@ -70,7 +70,7 @@ class DotPlot {
             .append('text')
             .text("Experience points (XP)")
             .attr("font-weight", "lighter")
-            .attr("font-size", "12pt")
+            .attr("font-size", "16px")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');
         vis.svg4.append('g')
@@ -78,7 +78,7 @@ class DotPlot {
             .append('text')
             .text("Kills")
             .attr("font-weight", "lighter")
-            .attr("font-size", "12pt")
+            .attr("font-size", "16px")
             .attr('transform', `translate(${vis.width / 2}, -10)`)
             .attr('text-anchor', 'middle');
 

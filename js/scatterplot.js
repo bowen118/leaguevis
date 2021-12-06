@@ -35,6 +35,7 @@ class ScatterPlot {
             .append('text')
             .text("Correlation Between Damage to Champions & Earned Gold")
             .attr("font-weight", "lighter")
+            .attr("font-size", "16px")
             .attr("transform", `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle')
             .style("fill", "#c89b3c")
