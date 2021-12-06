@@ -79,7 +79,7 @@ class RegionBarChart {
             .attr("fill", vis.colorScale);
 
         legend.append("text")
-            .attr("fill", "white")
+            .attr("fill", "#c89b3c")
             .attr("x", vis.width - 25)
             .attr("y", 10)
             .attr("dy", "0.32em")
@@ -128,7 +128,7 @@ class RegionBarChart {
             .call(vis.ordinalAxis)
             .selectAll("text")
             .style("text-anchor", "end")
-            .attr("transform", "rotate(-30)");
+            .attr("transform", "rotate(-50)");
         vis.numericAxis.ticks(vis.numericScale.domain()[1]).tickFormat(d3.format(",d"));
         vis.handleYAxisUpdate.transition().duration(transitionDuration)
             .call(vis.numericAxis);
