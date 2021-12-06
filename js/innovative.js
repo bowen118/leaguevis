@@ -112,6 +112,7 @@ class Innovative {
                      <p>Kills: ${vis.teamsData[index]["teamkills"]}</p>            
                      <h4>Neutral Objectives</h4>
                      <p>Dragons: ${vis.teamsData[index]["dragons"]}</p>
+                     <p>Heralds: ${vis.teamsData[index]["heralds"]}</p>
                      <p>Barons: ${vis.teamsData[index]["barons"]}</p>       
                      <h4>Structures</h4>
                      <p>Towers: ${vis.teamsData[index]["towers"]}</p>
