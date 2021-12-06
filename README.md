@@ -26,7 +26,7 @@ based on professional games.
   + `regioncountchart.js`: compare region win rates in 2021 World Championship
   + `scatterplot.js`: scatterplot for user to explore the dataset
 
-### Link
-https://bowen118.github.io/leaguevis/
+### Links
 
-### Screencast
++ [Website](https://bowen118.github.io/leaguevis/)
++ [Screencast](https://drive.google.com/file/d/1FNOUPy9gBqdlUWXERxVZ99NjZ1GtfOaX/view?usp=sharing)
