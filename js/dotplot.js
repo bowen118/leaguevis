@@ -202,7 +202,7 @@ class DotPlot {
                 .attr("height", 19)
                 .attr("fill", vis.colorScale);
             legend.append("text")
-                .attr("fill", "white")
+                .attr("fill", "#c89b3c")
                 .attr("x", vis.width - 25)
                 .attr("y", 10)
                 .attr("dy", "0.32em")
@@ -254,7 +254,7 @@ class DotPlot {
                 .attr("stroke", "grey")
                 .attr("stroke-width", "1px");
 
-            // Circles of variable 1
+            // first set of circles
             svg.selectAll("circles")
                 .data(data)
                 .enter()
@@ -270,7 +270,7 @@ class DotPlot {
                     }
                 });
 
-            // Circles of variable 2
+            // second set of circles
             svg.selectAll("circles")
                 .data(data)
                 .enter()

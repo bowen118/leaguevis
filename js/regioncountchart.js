@@ -92,7 +92,7 @@ class RegionCountChart {
             .attr("fill", vis.colorScale);
 
         legend.append("text")
-            .attr("fill", "white")
+            .attr("fill", "#c89b3c")
             .attr("x", vis.width - 25)
             .attr("y", 10)
             .attr("dy", "0.32em")
