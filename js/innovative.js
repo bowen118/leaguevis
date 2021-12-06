@@ -2,7 +2,7 @@
 *    class innovative      *
 * * * * * * * * * * * * * */
 let normalizedColumns = ["team kpm", "dragons", "heralds", "barons", "towers", "inhibitors", "dpm", "vspm", "earned gpm", "cspm", "xpdiffat15"]
-let colors = ['#3cb44b', '#ffe119', '#4363d8', '#46f0f0', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#aaffc3', '#ffd8b1', '#ffffff']
+let colors = ['#3ef5f4', '#fffabd', '#19df5c', '#2063de', '#9c25ea', '#c91d1d', '#ffffff', '#6d7a93', '#d35151', '#d39edb', '#ff00a9']
 
 class Innovative {
     constructor(parentElement, teamsData, normalizedTeamData, coords) {
