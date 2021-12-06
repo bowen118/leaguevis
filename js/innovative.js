@@ -72,6 +72,7 @@ class Innovative {
     wrangleData() {
         let vis = this
 
+        // filter games data to include data from the "most competitive" leagues
         vis.leagues = ["WCS", "MSI", "LCK", "LEC", "LCS", "PCS", "LCL", "LJL", "VCS", "TCL"]
         vis.teamData = vis.teamData.filter(d => this.leagues.includes(d.league)).slice(0, vis.coords.length)
         vis.teamsData = vis.teamsData.filter(d => this.leagues.includes(d.league)).slice(0, vis.coords.length)
@@ -86,6 +87,7 @@ class Innovative {
         vis.x.domain([0, 512])
         vis.y.domain([0, 512])
 
+        // append circles in the shape of League of Legends logo
         let circles = vis.svg.selectAll(".shape-circles")
             .data(vis.coords)
             .enter()
