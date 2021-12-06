@@ -9,6 +9,8 @@ class ScatterPlot {
         this.playerData = playerData.filter(d => d.league === "WCS")
         this.teamData = teamData.filter(d => d.league === "WCS")
         this.displayData = []
+        this.dummyData = []
+        this.dataState = true
 
         this.initVis()
     }
@@ -28,7 +30,7 @@ class ScatterPlot {
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`)
 
         // add title
-        vis.svg.append('g')
+        vis.title = vis.svg.append('g')
             .attr('class', 'title scatter-plot-title')
             .append('text')
             .text("Correlation Between Damage to Champions & Earned Gold")
@@ -48,14 +50,16 @@ class ScatterPlot {
         this.wrangleData()
     }
 
-    wrangleData(isPlayer= true, isFilter) {
+    wrangleData(isPlayer = true, isFilter, isSpecificFilter = false) {
         let vis = this
 
         let xAxisSelect = document.getElementById("filter-x-axis")
         let yAxisSelect = document.getElementById("filter-y-axis")
+        let teamSelect = document.getElementById("filter-by")
 
         if (!isFilter) {
             vis.displayData = isPlayer ? vis.playerData : vis.teamData
+            vis.dummyData = vis.displayData
             let availableAxis = Object.keys(vis.displayData[0]).filter(axis => ineligibleOrdinalColumns.indexOf(axis) < 0)
             availableAxis.forEach(axis => {
                 let opt = document.createElement("option")
@@ -75,13 +79,32 @@ class ScatterPlot {
                 xAxisSelect.appendChild(opt)
                 yAxisSelect.appendChild(opt2)
             })
+
+            let allTeamsOrPlayers = vis.displayData.map(d => isPlayer ? d.player : d.team)
+            allTeamsOrPlayers = new Set(allTeamsOrPlayers)
+            allTeamsOrPlayers = Array.from(allTeamsOrPlayers)
+            allTeamsOrPlayers.push("all")
+            allTeamsOrPlayers.forEach(d => {
+                let opt = document.createElement("option")
+                opt.value = d
+                opt.innerHTML = d
+                if (d === "all") {
+                    opt.selected = true
+                }
+
+                teamSelect.appendChild(opt)
+            })
         }
 
-        let selectedValX = xAxisSelect.options[xAxisSelect.selectedIndex].value
-        let selectedValY = yAxisSelect.options[yAxisSelect.selectedIndex].value
+        vis.selectedSpecific = teamSelect.options[teamSelect.selectedIndex].value
+        if (isSpecificFilter && vis.selectedSpecific !== "all") {
+            vis.displayData = vis.dummyData.filter(d => vis.dataState ? d.player === vis.selectedSpecific : d.team === vis.selectedSpecific)
+        }
 
-        // filter data by selected variables and get selected categories
-        vis.corrArr = vis.displayData.map(function(entry) {return {"x": +entry[selectedValX], "y": +entry[selectedValY]}})
+        vis.selectedValX = xAxisSelect.options[xAxisSelect.selectedIndex].value
+        vis.selectedValY = yAxisSelect.options[yAxisSelect.selectedIndex].value
+
+        vis.title.text(`Correlation Between ${vis.selectedValX} & ${vis.selectedValY}`)
 
         this.updateVis()
     }
@@ -90,23 +113,28 @@ class ScatterPlot {
         let vis = this
 
         // set domains for scales
-        vis.x.domain([0, d3.max(vis.corrArr, d => d.x)])
-        vis.y.domain([0, d3.max(vis.corrArr, d => d.y)])
+        vis.x.domain([0, d3.max(vis.displayData, function(d) { return +d[vis.selectedValX] })])
+        vis.y.domain([0, d3.max(vis.displayData, function(d) { return +d[vis.selectedValY] })])
 
         vis.svg.select(".x-axis").transition().call(vis.xAxis)
         vis.svg.select(".y-axis").transition().call(vis.yAxis)
 
-        let scatterDots = vis.svg.selectAll(".scatter-dots").data(vis.corrArr)
+        let scatterDots = vis.svg.selectAll("dot").data(vis.displayData)
+
+        vis.svg.selectAll("circle").data(vis.displayData).exit().remove()
+        vis.svg.selectAll(".scatters").data(vis.displayData).exit().remove()
 
         // enter & update
-        scatterDots.enter().append("circle").transition()
-            .attr("cx", function (d) { return vis.x(d.x); } )
-            .attr("cy", function (d) { return vis.y(d.y); } )
+        scatterDots.enter().append("circle")
+            .attr("class", "scatters")
+            .attr("cx", function (d) { return vis.x(+d[vis.selectedValX]); } )
+            .attr("cy", function (d) { return vis.y(+d[vis.selectedValY]); } )
             .attr("r", 3)
-            .attr("class", "scatter-dots")
             .style("fill", "#69b3a2")
+    }
 
-        // exit
-        scatterDots.exit().remove()
+    alterDataState(dataState) {
+        let vis = this
+        vis.dataState = dataState
     }
 }

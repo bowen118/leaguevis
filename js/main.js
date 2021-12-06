@@ -27,8 +27,11 @@ function initMainPage(dataArray) {
     scatterPlotVis = new ScatterPlot("explore", playersData, teamsData)
 }
 
-function dataChange(isPlayer, isFilter = false) {
-    scatterPlotVis.wrangleData(isPlayer, isFilter)
+function dataChange(isPlayer, isFilter = false, isSpecificFilter = false, shouldChangeDataState = false) {
+    scatterPlotVis.wrangleData(isPlayer, isFilter, isSpecificFilter)
+    if (shouldChangeDataState) {
+        scatterPlotVis.alterDataState(isPlayer)
+    }
 }
 
 function categoryChange() {

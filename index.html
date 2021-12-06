@@ -157,8 +157,8 @@
         <div id="explore-filters">
             <div class="buttons-container">
                 Choose Data Set:
-                <button type="button" onclick="dataChange(true)">Players</button>
-                <button type="button" onclick="dataChange(false)">Teams</button>
+                <button type="button" onclick="dataChange(true, false, false, true)">Players</button>
+                <button type="button" onclick="dataChange(false, false, false, true)">Teams</button>
             </div>
             <div class="buttons-container">
                 X Axis:
@@ -167,10 +167,8 @@
                 <select class="form-select form-select-sm columns-data" id="filter-y-axis" onchange="dataChange(true, true)"></select>
             </div>
             <div class="buttons-container">
-                Specific Player:
-                <select class="form-select form-select-sm columns-data" id="filter-by-player"></select>
-                Specific Team:
-                <select class="form-select form-select-sm columns-data" id="filter-by-team"></select>
+                Specific:
+                <select class="form-select form-select-sm columns-data" id="filter-by" onchange="dataChange(true, true, true)"></select>
             </div>
         </div>
     </div>
