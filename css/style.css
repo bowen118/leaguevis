@@ -15,6 +15,7 @@ h4 {
 
 h3 {
     padding: 10px;
+    text-align: left;
 }
 
 .container-fluid {
@@ -133,9 +134,11 @@ h3 {
     padding-right: 1rem;
 }
 
-.navbar-brand {
+.navbar-dark .navbar-brand {
     width: 136px;
     border: 0;
+    margin-left: 10px;
+    color: #c89b3c;
 }
 
 .page  {
@@ -172,7 +175,7 @@ h3 {
     text-align: left;
     font-size: 16px;
     font-weight: lighter;
-    margin-top: 20px;
+    padding-left: 20px;
 }
 
 .area-col {
@@ -189,4 +192,26 @@ h3 {
 
 .dotplot-row {
     height: 50%;
+}
+
+.kde-row {
+    margin-top: 10px;
+    height: 10%;
+}
+
+.kde-row-2 {
+    height: 90%;
+}
+
+.conclusion {
+    text-align: left;
+    padding-left: 10%;
+}
+
+.source-link {
+    color: #c89b3c;
+}
+
+.source-link:hover {
+    color: #d8ab4c;
 }

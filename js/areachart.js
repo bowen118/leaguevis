@@ -254,7 +254,7 @@ class AreaChart {
             .attr("width", function(d) { return vis.histX(d.x1) - vis.histX(d.x0) -1 ; })
             .attr("height", function(d) { return vis.height2 - vis.histY(d.length); })
             .attr("opacity", "0.5")
-            .style("fill", "#69b3a2")
+            .style("fill", "#c89b3c")
             .on("mouseover", function(event, d) {
                 let champs = "";
                 d.forEach((bar, index) => {

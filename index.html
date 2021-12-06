@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>League Vis</title>
+    <title>League of Legends 2021</title>
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,400italic,700' rel='stylesheet'
           type='text/css'>
@@ -28,7 +28,7 @@
 <body>
 
 <nav class="navbar sticky-top navbar-expand-md navbar-dark navbar-no-bg">
-    <a class="navbar-brand" href="index.html">League Vis</a>
+    <a class="navbar-brand" href="index.html">League of Legends 2021</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,6 +52,9 @@
             </li>
             <li class="nav-item" onclick="scrollto('page5');">
                 <a class="nav-link" href="#">5</a>
+            </li>
+            <li class="nav-item" onclick="scrollto('page6');">
+                <a class="nav-link" href="#">6</a>
             </li>
             <li class="nav-item" onclick="scrollto('explore');">
                 <a class="nav-link" href="#">Explore</a>
@@ -81,7 +84,7 @@
     </div>
 
     <div class="page" id="page2">
-        <h3>In the world of professional play, one region tends to do better than the others…</h3>
+        <h3>Professional League of Legends is a vibrant and active world. Throughout its history, one region tends to do better than the others…</h3>
         <div class="row justify-content-center">
             <div class="col-6" id="region-bar">
                 <select id='categorySelector' class="form-select align-self-center" style="width: 100%" onchange="categoryChange()">
@@ -95,7 +98,7 @@
     </div>
 
     <div class="page" id="page3">
-        <h3>Let’s explore some of the factors of the game that make this the case! In the beginning, all teams strategize by banning and picking champions to play. By taking a look at the most banned champions and when they were likely to be most banned, _______</h3>
+        <h3>There are good teams and bad teams. Let’s explore some factors of the game that make this the case! In the beginning, all teams strategize by banning and picking champions to play. Hover for more details.</h3>
         <div class="row justify-content-center">
             <div class="col-8 area-col">
                 <div class="row justify-content-center area-banrates">
@@ -106,12 +109,20 @@
                 </div>
             </div>
             <div class="col-4 descriptions">
-                Explain champion picks/bans
-                <br/>
-                The left area chart shows champions that are unusually likely to be picked/banned in 2021 until November.
+                The left area chart shows champions that are <b>unusually likely</b> to be picked/banned in 2021 until November.
                 We define "unusually often" as being at least 6 times more likely to be picked/banned than random choice.
                 <br/>
-                The most likely to get picked/banned champions seem to share...
+                <br/>
+                Looking at the pick/ban rates over the year, we see some champions <b>spiked</b> in only one or two months while
+                others remained <b>popular consistently</b>.
+                <br/>
+                <br/>
+                Spikes in popularity are caused by <b>patches</b>, regular updates to the game that change how strong or weak champions are.
+                This redefines the popular champions and play style, which players call <b>the meta</b>.
+                <br/>
+                <br/>
+                However, we see champions that remain consistently popular, such as Thresh and Lee Sin, generally share the trait of having
+                <b>high utility</b> for the team, by providing ways to <b>start fights</b> (engaging) or <b>protecting teammates</b> (peel).
             </div>
         </div>
     </div>
@@ -122,35 +133,93 @@
             <div class="col-4" id="gold-dotplot"></div>
             <div class="col-4" id="farm-dotplot"></div>
             <div class="col-4 descriptions">
-                Comments here
+                In the game, <b>gold</b> can be earned by killing enemy units and taking objectives and can then be used to purchase items to make champions stronger.
+                <b>Farm</b> is equivalent to creep score as described above.
+                <b>XP</b> can be earned by killing enemy units and allow champions to level up and become stronger.
+                <b>Kills</b> denote the number of times the team kills the opposing team's champions.
+                Gold, farm, XP, and kills are all considered important to winning. But which is more important?
             </div>
         </div>
         <div class="row justify-content-center dotplot-row">
             <div class="col-4" id="xp-dotplot"></div>
             <div class="col-4" id="kills-dotplot"></div>
             <div class="col-4 descriptions">
-                More comments here
+                For all games in the 2021 World Championship, we compare the difference between the two teams in terms of these factors and the game result, sorted by the difference at 10 minutes into the game.
+                Without a doubt, in all 4 factors, the difference at <b>10 minutes</b> into the game is usually <b>heightened</b> by <b>15 minutes</b> into the game.
+                Among all 4 factors, we see that <b>gold at 10 minutes</b> show the most exaggerated <b>separation of wins and losses</b>.
+                Intuitively, this is expected since items purchased from gold provides the greatest growth in champion strength and thus advantage over the opposing team.
             </div>
         </div>
     </div>
 
     <div class="page" id="page5">
-        <h3>Kills are concentrated around objectives and the middle lane</h3>
+        <h3>The in-game map is 2 dimensional. Teams pay selective attention to various areas of the map. Which areas are more important and why?</h3>
         <div class="row">
             <div class="col-6">
-                <select id='sideSelector' class="form-select align-self-center" style="width: 30%" onchange="sideChange()">
-                    <option value="both" selected>Both sides</option>
-                    <option value="red">Red side only</option>
-                    <option value="blue">Blue side only</option>
-                </select>
-                <div id="slider"></div>
-                <div class="row justify-content-center">
+                <div class="row kde-row">
+                    <div class="col-4">
+                        <select id='sideSelector' class="form-select align-self-center" onchange="sideChange()">
+                            <option value="both" selected>Both sides</option>
+                            <option value="red">Red side only</option>
+                            <option value="blue">Blue side only</option>
+                        </select>
+                    </div>
+                    <div class="col-8">
+                        <div id="slider"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center kde-row-2">
                     <div class="col" id="kde">
                     </div>
                 </div>
             </div>
             <div class="col-6 descriptions">
-                Comments
+                <br/>
+                <br/>
+                Using all games from the 2021 World Championship, the heatmap shows the <b>relative density</b> of kills in each area.
+                More opaque color indicates higher density
+                (a numeric scale corresponding to color is not shown since the numeric values are relative and normalized, so not very interpretable).
+                The slider selects the portion of game time, normalized by game length.
+                <br/>
+                <br/>
+                Among the 3 lanes, the <b>middle lane</b> sees the most action.
+                Selecting a small range on the slider, we see that as the game progresses, kills become less restricted to lanes and more focused on <b>Baron</b> (top left dark patch) and <b>Dragon</b> (bottom right dark patch).
+                Since these 2 objectives strengthen the team considerably, it is expected that top teams in the world place such importance on them.
+                Toward the game's end, kills become closer and closer to the opponent's base.
+                <br/>
+                <br/>
+                The drop down allows filtering by which side of the map and team is on: <b>red</b> (start at top right corner) or <b>blue</b> (start at bottom left corner).
+                Interestingly, we see that the <b>red side</b> tends to get a little more kills in the <b>Dragon</b> area while the <b>blue side</b> tends to get a little more in the <b>Baron</b> area.
+                This is likely due to the design of the map and placement of walls, that allow one team easier access to an area.
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page6">
+        <h3>The 2021 professional games tell us that a good League of Legends team should:</h3>
+        <div class="row">
+            <div class="col conclusion">
+                Ban or pick champions that provide utility to the game and/or are favored by recent updates to the game.
+                <br/>
+                Focus on team <b>gold</b>, <b>farm</b>, <b>experience points</b>, and <b>kills</b>, but more priority should be placed on <b>gold</b> in order to purchase items and strengthen champions.
+                <br/>
+                Try to create a lead by 10 minutes, since team advantages usually <b>heighten</b> as the game progresses.
+                <br/>
+                Focus on objectives (<b>Dragon</b>, <b>Baron</b>, and <b>Towers</b>) as the game goes on, and use map structures such as walls to the team's advantage.
+                <br/>
+                Most efforts at pushing for Towers should be concentrated in the <b>middle lane</b>.
+                <br/>
+                <br/>
+                Data sources:
+                <ul>
+                    <li>
+                        <a class="source-link" href="https://oracleselixir.com/">Professional games in 2021</a>
+                    </li>
+                    <li>
+                        <a class="source-link" href="https://gol.gg/tournament/tournament-stats/World%20Championship%202021/">World Championship 2021 details</a>
+                    </li>
+                </ul>
+                Continue scrolling to explore all factors in the profession games dataset!
             </div>
         </div>
     </div>

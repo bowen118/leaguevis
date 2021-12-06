@@ -265,7 +265,7 @@ class DotPlot {
                 .append("circle")
                 .attr("cx", function(d) { return x(d[x1]); })
                 .attr("cy", function(d) { return y(d.id); })
-                .attr("r", "2")
+                .attr("r", "1")
                 .style("fill", (d) => {
                     if (d.result === "0") {
                         return "#FF6863";
@@ -281,7 +281,7 @@ class DotPlot {
                 .append("circle")
                 .attr("cx", function(d) { return x(d[x2]); })
                 .attr("cy", function(d) { return y(d.id); })
-                .attr("r", "2")
+                .attr("r", "1")
                 .style("fill", (d) => {
                     if (d.result === "0") {
                         return "#FFDCD1";

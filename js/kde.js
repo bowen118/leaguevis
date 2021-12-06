@@ -9,7 +9,7 @@ class KDE {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 50, right: 100, bottom: 100, left: 50};
+        vis.margin = {top: 10, right: 50, bottom: 10, left: 50};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
         vis.dim = Math.min(vis.width, vis.height);
@@ -48,18 +48,13 @@ class KDE {
             },
             step: 0.01,
             behaviour: "tap-drag",
-            // tooltips: true,
-            // format: {
-            //     to: d => d,
-            //     from: d => parseInt(d)
-            // },
             pips: {
                 mode: "range",
                 density: 5
             }
         });
         slider.style.height = "18px";
-        slider.style.width = `${vis.dim}px`;
+        slider.style.width = `${vis.dim * 2 / 3}px`;
         vis.start = sliderMin;
         vis.end = sliderMax;
         slider.noUiSlider.on('update', function(values) {
@@ -115,7 +110,7 @@ class KDE {
         } else if (vis.side === "blue") {
             vis.color.range(["white", "blue"]);
         } else {
-            vis.color.range(["white", "#DA70D6"]);
+            vis.color.range(["white", "#871F78"]);
         }
 
         vis.kde = vis.svg
