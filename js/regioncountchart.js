@@ -68,7 +68,7 @@ class RegionCountChart {
             .range([0, vis.width / 4]);
 
         vis.colorScale = d3.scaleOrdinal()
-            .range(["#A1E8AF", "#EEFFDB"]);
+            .range(["#A1E8AF", "#FF6863"]);
 
         vis.ordinalAxis = d3.axisRight()
             .scale(vis.ordinalScale);
